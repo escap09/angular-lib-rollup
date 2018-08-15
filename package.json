@@ -1,10 +1,5 @@
 {
   "name": "angular-lib-rollup",
-  "version": "0.1.0",
-  "main": "lib.umd.js",
-  "jsnext:main": "lib.esm.js",
-  "module": "lib.esm.js",
-  "typings": "lib.d.ts",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -12,11 +7,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "compile": "ngc -p tsconfig.json",
+    "compile:lib": "rimraf dist && ngc -p tsconfig.lib.json",
     "copy": "node ./src/tools/removecode && node ./src/tools/copy-clean-package",
-    "rollup:fesm": "rollup dist/src/app/api.js -o dist/lib.esm.js --output.format es",
-    "rollup:umd": "rollup dist/src/app/api.js -o dist/lib.umd.js --output.format umd --name lib",
-    "build:lib": "rimraf dist && npm run compile && npm run rollup:fesm && npm run rollup:umd"
+    "rollup:fesm": "rollup dist/projects/lib-demo/api.js -o dist/lib-demo.esm.js --output.format es",
+    "rollup:umd": "rollup dist/projects/lib-demo/api.js -o dist/lib-demo.umd.js --output.format umd --name lib-demo",
+    "build:lib": "rimraf dist && npm run compile:lib && npm run rollup:fesm && npm run rollup:umd"
   },
   "private": true,
   "dependencies": {
@@ -31,7 +26,8 @@
     "@angular/router": "^6.0.3",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.26",
+    "lib-demo": "0.1.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.8",

@@ -1,21 +1,19 @@
-// import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-// import { AppComponent } from './app.component';
-import { LibDemoComponent } from './lib-demo/lib-demo.component';
+import { AppComponent } from './app.component';
 
-// exporting
-// export { LibDemoComponent } from './lib-demo/lib-demo.component';
+// Here its picking library from node-modules
+import { LibDemoModule } from 'lib-demo';
 
 @NgModule({
   declarations: [
-    // AppComponent,
-    LibDemoComponent
+    AppComponent
   ],
   imports: [
-    // BrowserModule
+    BrowserModule, LibDemoModule
   ],
-  // providers: [],
-  exports: [ LibDemoComponent ]
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
