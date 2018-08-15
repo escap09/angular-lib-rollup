@@ -1,6 +1,10 @@
 {
   "name": "angular-lib-rollup",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "main": "lib.umd.js",
+  "jsnext:main": "lib.esm.js",
+  "module": "lib.esm.js",
+  "typings": "lib.d.ts",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +12,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:lib": "rollup main.js --file lib-demo.js --format umd --name lib-demo"
+    "compile": "ngc -p tsconfig.json",
+    "copy": "node ./src/tools/removecode && node ./src/tools/copy-clean-package",
+    "rollup:fesm": "rollup dist/src/app/api.js -o dist/lib.esm.js --output.format es",
+    "rollup:umd": "rollup dist/src/app/api.js -o dist/lib.umd.js --output.format umd --name lib",
+    "build:lib": "rimraf dist && npm run compile && npm run rollup:fesm && npm run rollup:umd"
   },
   "private": true,
   "dependencies": {
@@ -42,6 +50,7 @@
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "^5.4.0",
+    "rimraf": "^2.6.2",
     "rollup": "^0.64.1",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
