@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Here its picking library from node-modules
-import { LibDemoModule } from 'lib-demo';
+import { LibDemoModule, LibDemoService } from 'lib-demo';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,7 @@ import { LibDemoModule } from 'lib-demo';
   imports: [
     BrowserModule, LibDemoModule
   ],
-  providers: [],
+  providers: [LibDemoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

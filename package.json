@@ -1,5 +1,8 @@
 {
   "name": "angular-lib-rollup",
+  // if main bundle is umd it picks umd otherwise esm if mentioned main
+  // "main": "lib-demo.esm.js",
+  // "main": "lib-demo.umd.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
